@@ -4,9 +4,10 @@ import { axiosInstance } from "../utils/axiosConfig";
 // Thunks for sending and fetching messages
 export const sendMessage = createAsyncThunk(
   "messages/sendMessage",
-  async ({ receiverId, message }, { rejectWithValue }) => {
+  async ({ senderId, receiverId, message }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post(`messages/send/${receiverId}`, {
+        receiverId,
         message,
       });
       return response.data.newMessage;
@@ -49,7 +50,8 @@ const messageSlice = createSlice({
       .addCase(sendMessage.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
+      });
+    builder
       .addCase(fetchMessages.pending, (state) => {
         state.status = "loading";
       })

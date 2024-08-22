@@ -1,7 +1,6 @@
 import React from "react";
 
-const Message = ({ message }) => {
-
+const Message = ({ messages = [] }) => {
   return (
     <>
       {/* the sender message */}
