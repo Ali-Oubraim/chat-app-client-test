@@ -3,7 +3,7 @@ import backgroundImage from "../images/twzbg.jpg";
 import logo from "../images/logo.png";
 import AllMessages from "./AllMessages";
 
-const ChatComponent = () => {
+const ChatComponent = ({messages}) => {
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
